@@ -10,7 +10,6 @@ import cv2
 from pdf2image import convert_from_path
 
 def extract_text_from_pdf(file_path):
-    """Extracts text content from a PDF file."""
     with open(file_path, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
         text = ''
@@ -19,7 +18,6 @@ def extract_text_from_pdf(file_path):
     return text
 
 def extract_features(text):
-    """Extracts relevant features from the extracted text, such as words, dates, amounts, and invoice numbers."""
     words = re.findall(r'\w+', text.lower())
     dates = re.findall(r'\b\d{2}/\d{2}/\d{4}\b', text)
     amounts = re.findall(r'\b\d+\.\d{2}\b', text)
@@ -34,7 +32,6 @@ def extract_features(text):
     }
 
 def calculate_cosine_similarity(new_invoice_features, train_invoices_features):
-    """Calculates the cosine similarity between the new invoice and training invoices."""
     vectorizer = TfidfVectorizer()
     database_texts = [features['full_text'] for features in train_invoices_features]
     vectors = vectorizer.fit_transform([new_invoice_features['full_text']] + database_texts)
@@ -42,7 +39,6 @@ def calculate_cosine_similarity(new_invoice_features, train_invoices_features):
     return cosine_sim[0]
 
 def calculate_jaccard_similarity(new_invoice_features, train_invoices_features):
-    """Calculates the Jaccard similarity based on the presence of words."""
     vectorizer = CountVectorizer(binary=True)
     database_texts = [' '.join(features['words']) for features in train_invoices_features]
     vectors = vectorizer.fit_transform([new_invoice_features['full_text']] + database_texts).toarray()
@@ -52,14 +48,12 @@ def calculate_jaccard_similarity(new_invoice_features, train_invoices_features):
     return jaccard_sim
 
 def convert_pdf_to_image(pdf_path):
-    """Converts the first page of a PDF into an image."""
     images = convert_from_path(pdf_path, first_page=1, last_page=1)
     if images:
         return cv2.cvtColor(np.array(images[0]), cv2.COLOR_RGB2BGR)
     return None
 
 def calculate_image_similarity(new_invoice_path, train_invoice_path):
-    """Calculates the structural similarity between the images of two invoices."""
     new_image = convert_pdf_to_image(new_invoice_path)
     train_image = convert_pdf_to_image(train_invoice_path)
     if new_image is None or train_image is None:
@@ -76,7 +70,6 @@ def calculate_image_similarity(new_invoice_path, train_invoice_path):
     return score
 
 def load_invoices_from_directory(directory_path):
-    """Loads invoices from a directory, extracting their features."""
     invoices = []
     for filename in os.listdir(directory_path):
         if filename.endswith('.pdf'):
@@ -87,7 +80,6 @@ def load_invoices_from_directory(directory_path):
     return invoices
 
 def find_most_similar_invoice(new_invoice_features, new_invoice_path, train_invoices):
-    """Finds the most similar invoice in the training set based on various similarity metrics."""
     train_invoices_features = [invoice['features'] for invoice in train_invoices]
     
     cosine_similarities = calculate_cosine_similarity(new_invoice_features, train_invoices_features)
@@ -106,7 +98,6 @@ def find_most_similar_invoice(new_invoice_features, new_invoice_path, train_invo
     return most_similar_invoice, similarity_scores, average_similarity
 
 def process_test_invoices(train_directory, test_directory):
-    """Processes each test invoice, finding and displaying the most similar training invoice."""
     train_invoices = load_invoices_from_directory(train_directory)
     
     for filename in os.listdir(test_directory):
