@@ -34,14 +34,13 @@ This project aims to identify the most similar invoice in a training set based o
 
 ### Running the Program
 
-1. **Run the similarity detection script:**
+1.**Make your Dataset**
+   Make a two folders train and test. Add the invoice pdf's for both training and testing.
+2. **Run the similarity detection script:**
    ```sh
    python3 main.py
    ```
-
-2.**Make your Dataset**
-   Make a two folders train and test. Add the invoice pdf's for both training and testing.
-
+   [It may take some time to execute when you run it first time]
 3. **Output:**
    The program will output the most similar training invoice for each test invoice along with the similarity scores for cosine, Jaccard, and image similarities.
 
