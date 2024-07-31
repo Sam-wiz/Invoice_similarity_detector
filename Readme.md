@@ -53,4 +53,4 @@ This project aims to identify the most similar invoice in a training set based o
 - OpenCV: For image processing.
 - pdf2image: To convert PDF pages to images.
 
-### Approach Document -> Check out [https://github.com/Sam-wiz/Invoice_similarity_detector/blob/master/Approach.md]
+### Approach Document -> Check out [Approach.md](https://github.com/Sam-wiz/Invoice_similarity_detector/blob/master/Approach.md)
