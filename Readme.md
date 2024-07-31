@@ -25,7 +25,7 @@ This project aims to identify the most similar invoice in a training set based o
 
 3. **Install required packages:**
    ```sh
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 
 4. **Setup directories:**
@@ -36,11 +36,13 @@ This project aims to identify the most similar invoice in a training set based o
 
 1. **Run the similarity detection script:**
    ```sh
-   python main.py
+   python3 main.py
    ```
 
+2.**Make your Dataset**
+   Make a two folders train and test. Add the invoice pdf's for both training and testing.
 
-2. **Output:**
+3. **Output:**
    The program will output the most similar training invoice for each test invoice along with the similarity scores for cosine, Jaccard, and image similarities.
 
 ## Dependencies
@@ -52,3 +54,5 @@ This project aims to identify the most similar invoice in a training set based o
 - pdf2image: To convert PDF pages to images.
 
 ### Approach Document -> Check out [Approach.md](https://github.com/Sam-wiz/Invoice_similarity_detector/blob/master/Approach.md)
+
+### Output Video -> Check out [Output Video](https://drive.google.com/file/d/160PKTnrIIGAxmBMgbINqs9EayFa0YWtD/view?usp=sharing)
