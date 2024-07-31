@@ -13,8 +13,8 @@ This project aims to identify the most similar invoice in a training set based o
 
 1. **Clone the repository:**
    ```sh
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/Sam-wiz/Invoice_similarity_detector.git
+   cd Invoice_similarity_detector
    ```
 
 2. **Create a virtual environment (optional but recommended):**
@@ -36,9 +36,9 @@ This project aims to identify the most similar invoice in a training set based o
 
 1. **Run the similarity detection script:**
    ```sh
-   python <script-name>.py
+   python main.py
    ```
-   Replace `<script-name>` with the actual name of the script file containing the provided code.
+
 
 2. **Output:**
    The program will output the most similar training invoice for each test invoice along with the similarity scores for cosine, Jaccard, and image similarities.
