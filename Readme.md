@@ -1,5 +1,3 @@
-### README.md
-
 # Invoice Similarity Detection
 
 This project aims to identify the most similar invoice in a training set based on a new invoice. The similarity is determined using various metrics, including cosine similarity, Jaccard similarity, and structural similarity (SSIM) between images of the invoices.
